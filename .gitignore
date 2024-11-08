@@ -1,0 +1,31 @@
+# Java and Maven
+target/
+*.log
+*.class
+*.jar
+*.war
+*.ear
+*.db
+.idea/
+.vscode/
+
+# Eclipse
+.settings/
+
+# IntelliJ IDEA
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Cucumber reports
+*.html
+*.json
+
+# Other common files to ignore
+*.iml
+*.swp
+*.swo
+*.bak
+selenium-server-4.26.0.jar
