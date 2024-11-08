@@ -1,0 +1,22 @@
+{
+  "name": "vehicledatacheckertest",
+  "version": "1.0.0",
+  "description": "The VehicleDataCheckerTest suite is designed to automate the extraction, validation, and comparison of vehicle data from a car valuation website",
+  "main": "index.js",
+  "scripts": {
+    "generate-report": "node reporter.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Temi89/VehicleDataCheckerTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Temi89/VehicleDataCheckerTest/issues"
+  },
+  "homepage": "https://github.com/Temi89/VehicleDataCheckerTest#readme",
+  "devDependencies": {
+    "cucumber-html-reporter": "^7.2.0"
+  }
+}
