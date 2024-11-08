@@ -1,0 +1,45 @@
+name: Selenium Tests with Firefox in Docker
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to main branch
+
+jobs:
+  firefox-docker-tests:
+    runs-on: ubuntu-latest  # Use Ubuntu environment
+
+    services:
+      selenium:
+        image: selenium/standalone-firefox:latest  # Docker image for standalone Firefox
+        options: --shm-size 2g  # Set shared memory size for the container
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2  # Checkout your code
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Adjust Java version if needed
+
+      - name: Install dependencies (if Maven is used)
+        run: mvn install  # Install project dependencies
+
+      - name: Run Selenium tests on Docker Firefox
+        env:
+          BROWSER: firefox  # Set browser to Firefox in the environment
+        run: |
+          mvn test -Dbrowser=${BROWSER}  # Use Maven to run tests with the specified browser
+
+      - name: Upload test results (JUnit)
+        uses: actions/upload-artifact@v3  # Updated version to v3
+        with:
+          name: test-results
+          path: target/test-*.xml  # Upload JUnit test results for inspection
+
+      - name: Upload Cucumber HTML report
+        uses: actions/upload-artifact@v3  # Updated version to v3
+        with:
+          name: cucumber-html-report
+          path: target/report/cucumber_report.html  # Path to Cucumber HTML report
