@@ -44,6 +44,10 @@ Before running the tests, ensure you have the following installed:
 2. **Install dependencies** via Maven:
    Please note everything needed to execute the project already exists in the Pom file (node etc)
    ```bash
+   chmod +x ./selenium-server.sh
+   ./selenium-server.sh
+   
+  The above step is very important the project is setup to run with remote for a smooth experience
    mvn clean install
    ```
 
@@ -54,7 +58,7 @@ Before running the tests, ensure you have the following installed:
 
 ### Usage Instructions
 
-1. **Add Vehicle Registration Numbers**  
+1.**Add Vehicle Registration Numbers**  
    Update `car_input.txt` or simply create a new file in the same location with registration numbers to validate. Each
    line should contain one registration number.
 
@@ -76,6 +80,12 @@ The validation process consists of the following key steps:
 
 ### Running the Tests and Generating Html reports
 Please note cucumber reports will open automatically
+ **Setting the  up the  browser**:
+   ```bash
+   By default this is set to run on firefox you can change it by updating config.properties  
+   browser.target=chrome
+   ```
+
 1. **Run with Maven**:
    ```bash
    mvn test verify
