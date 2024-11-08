@@ -33,10 +33,16 @@ jobs:
         env:
           BROWSER: firefox  # Set browser to Firefox in the environment
         run: |
-          mvn test verify
+          mvn test -Dbrowser=${BROWSER}  # Use Maven to run tests with the specified browser
+
+      - name: Upload test results (JUnit)
+        uses: actions/upload-artifact@v3  # Updated version to v3
+        with:
+          name: test-results
+          path: target/test-*.xml  # Upload JUnit test results for inspection
 
       - name: Upload Cucumber HTML report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # Updated version to v3
         with:
           name: cucumber-html-report
           path: target/report/cucumber_report.html  # Path to Cucumber HTML report
